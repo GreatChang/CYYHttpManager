@@ -17,17 +17,18 @@ Pod::Spec.new do |spec|
 
   spec.name         = "CYYHttpManager"
   spec.version      = "0.0.1"
-  spec.summary      = "A short description of CYYHttpManager."
-
+  spec.summary      = "对AFNetworking的二次封装，支持App复杂的网络处理."
+  
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
   #   * Try to keep it short, snappy and to the point.
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
+  对AFNetworking的二次封装，支持App复杂的网络处理,类似于YTKNetworking，但是要简介一些
                    DESC
 
-  spec.homepage     = "http://EXAMPLE/CYYHttpManager"
+  spec.homepage     = "https://github.com/GreatChang/CYYHttpManager.git"
   # spec.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -38,7 +39,7 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = "MIT (example)"
+  spec.license      = "MIT (CYYHttpManager)"
   # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -52,7 +53,7 @@ Pod::Spec.new do |spec|
   #  profile URL.
   #
 
-  spec.author             = { "yangchang" => "yangchang@tencent.com" }
+  spec.author             = { "GreatChang" => "2249233077@qq.com" }
   # Or just: spec.author    = "yangchang"
   # spec.authors            = { "yangchang" => "yangchang@tencent.com" }
   # spec.social_media_url   = "https://twitter.com/yangchang"
@@ -64,7 +65,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.platform     = :ios
-  # spec.platform     = :ios, "5.0"
+  spec.platform     = :ios, "8.0"
 
   #  When using multiple platforms
   # spec.ios.deployment_target = "5.0"
@@ -79,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "http://EXAMPLE/CYYHttpManager.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/GreatChang/CYYHttpManager.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -90,10 +91,11 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-  spec.source_files  = "Classes", "Classes/**/*.{h,m}"
-  spec.exclude_files = "Classes/Exclude"
+  spec.source_files  = "CYYHttpManager/Sources/**/*.{h,m}"  # 默认到 spec 文件夹，上文podspec 在CYYHttpManager 下，sources 在与pospec 同层级的在CYYHttpManager下，而Sources下的文件我们都要
+  spec.exclude_files = "Classes/*.h"
+  #忽略的文件，写法与s.source_files一致，比如你不想要Sources下的logger文件, s.exclude_files = "HKHttpManager/Sources/logger/*.{h.m}"
 
-  # spec.public_header_files = "Classes/**/*.h"
+  spec.public_header_files = "CYYHttpManager/Sources/**/**/*.h"
 
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -132,6 +134,6 @@ Pod::Spec.new do |spec|
   # spec.requires_arc = true
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-  # spec.dependency "JSONKit", "~> 1.4"
+  spec.dependency "AFNetworking"
 
 end
